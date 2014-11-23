@@ -6,9 +6,9 @@ As a reaction to this, I sat down and got into Lua, in order to write a little p
 
 The workflow looks as follows:
 
-1. A new menu entry “DeAspect current selection” is added in the Library menu.
+1. A new menu entry "DeAspect current selection" is added in the Library menu.
 2. If the entry is called without a selection, nothing happens.
-3. If the entry is called with a selection, the selected photos will be passed to `exiftool -AspectRatio=”” -AspectFrame=”0 0 0 0″ -DefaultCropOrigin=”” -DefaultCropSize=”” -CroppedImageWidth=”WIDTH” -CroppedImageHeight=”HEIGHT” -o “NEW” “ORIG”`
+3. If the entry is called with a selection, the selected photos will be passed to `exiftool -AspectRatio="" -AspectFrame="0 0 0 0″ -DefaultCropOrigin="" -DefaultCropSize="" -CroppedImageWidth="WIDTH" -CroppedImageHeight="HEIGHT" -o "NEW" "ORIG"`
 4. The newly created file NEW is then imported and stacked on top of the original photo.
 5. As a manual step, the previews should be re-rendered for the new files.
 
@@ -31,6 +31,13 @@ Select the photos you want to create de-aspected copies from and choose 'DeAspec
 5. Submit a pull request :D
 
 ## History
+
+2012-08-16: DeAspect_0-1-3.lrplugin.zip
+
+Reading WIDTH and HEIGHT from exiftool -ImageWidth -ImageHeight  
+New exiftool call "exiftool -AspectRatio="" -AspectFrame="0 0 0 0″ -DefaultCropOrigin="" -DefaultCropSize="" -CroppedImageWidth="WIDTH" -CroppedImageHeight="HEIGHT" -o "NEW" "ORIG""  
+Works with DNG, ORF and CR2.
+
 
 2012-05-15: DeAspect_0-1-2.lrplugin.zip
 

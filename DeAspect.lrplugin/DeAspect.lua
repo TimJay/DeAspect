@@ -8,6 +8,7 @@ local LrDialogs = import 'LrDialogs'
 local LrTasks = import 'LrTasks'
 local LrPathUtils = import 'LrPathUtils'
 local LrProgressScope = import 'LrProgressScope'
+local LrFileUtils = import 'LrFileUtils'
 
 local function getPhotos()
 	local photo = LrApplication:activeCatalog():getTargetPhoto()
@@ -34,8 +35,15 @@ local function processPhotos()
 			progress:setCaption(LrPathUtils.leafName(path))
 			local ext = LrPathUtils.extension(path)
 			local newPath = LrPathUtils.replaceExtension(path, ".deaspect."..ext)
-			LrTasks.execute("exiftool -AspectRatio=\"\" -AspectFrame=\"0 0 0 0\" -DefaultCropOrigin=\"\" -DefaultCropSize=\"\" -o \""..newPath.."\" \""..path.."\"")
+			local dataPath = LrPathUtils.replaceExtension(path, ".tmp")
+			LrTasks.execute("exiftool -args -ImageWidth -ImageHeight \""..path.."\" > \""..dataPath.."\"")
+			local widthheight = LrFileUtils.readFile(dataPath)
+			local args
+			local matcher = string.gmatch(widthheight, "%a+=(%d+)")
+			local width, height = matcher(), matcher() 
+			LrTasks.execute("exiftool -AspectRatio=\"\" -AspectFrame=\"0 0 0 0\" -DefaultCropOrigin=\"\" -DefaultCropSize=\"\" -CroppedImageWidth=\""..width.."\" -CroppedImageHeight=\""..height.."\" -o \""..newPath.."\" \""..path.."\"")
 			LrApplication:activeCatalog():withWriteAccessDo("DeAspect", function() LrApplication:activeCatalog():addPhoto(newPath, photo, "above") end)
+			LrFileUtils.moveToTrash(dataPath)
 			count = count +1
 		end
 		progress:done()
