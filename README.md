@@ -32,6 +32,12 @@ Select the photos you want to create de-aspected copies from and choose 'DeAspec
 
 ## History
 
+2012-05-15: DeAspect_0-1-2.lrplugin.zip
+
+Changed call from "exiftool.exe" to "exiftool" for cross platform compatibility  
+New exiftool call "exiftool -AspectRatio="" -AspectFrame="0 0 0 0″ -DefaultCropOrigin="" -DefaultCropSize="" -o "NEW" "ORIG"  
+Works with DNG and ORF.
+
 2012-05-13: [DeAspect_0-1-1.lrplugin.zip](http://tim.jagenberg.info/files/2012/05/DeAspect_0-1-1.lrplugin.zip)
 
 Initial public release

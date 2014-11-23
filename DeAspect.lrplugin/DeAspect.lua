@@ -34,7 +34,7 @@ local function processPhotos()
 			progress:setCaption(LrPathUtils.leafName(path))
 			local ext = LrPathUtils.extension(path)
 			local newPath = LrPathUtils.replaceExtension(path, ".deaspect."..ext)
-			LrTasks.execute("exiftool.exe -AspectFrame=\"0 0 0 0\" -o \""..newPath.."\" \""..path.."\"")
+			LrTasks.execute("exiftool -AspectRatio=\"\" -AspectFrame=\"0 0 0 0\" -DefaultCropOrigin=\"\" -DefaultCropSize=\"\" -o \""..newPath.."\" \""..path.."\"")
 			LrApplication:activeCatalog():withWriteAccessDo("DeAspect", function() LrApplication:activeCatalog():addPhoto(newPath, photo, "above") end)
 			count = count +1
 		end
