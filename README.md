@@ -32,14 +32,14 @@ Select the photos you want to create de-aspected copies from and choose 'DeAspec
 
 ## History
 
-2012-08-16: DeAspect_0-1-3.lrplugin.zip
+2012-08-16: [DeAspect_0-1-3.lrplugin.zip](http://tim.jagenberg.info/files/2012/08/DeAspect_0-1-3.lrplugin.zip)
 
 Reading WIDTH and HEIGHT from exiftool -ImageWidth -ImageHeight  
 New exiftool call "exiftool -AspectRatio="" -AspectFrame="0 0 0 0″ -DefaultCropOrigin="" -DefaultCropSize="" -CroppedImageWidth="WIDTH" -CroppedImageHeight="HEIGHT" -o "NEW" "ORIG""  
 Works with DNG, ORF and CR2.
 
 
-2012-05-15: DeAspect_0-1-2.lrplugin.zip
+2012-05-15: [DeAspect_0-1-2.lrplugin.zip](http://tim.jagenberg.info/files/2012/05/DeAspect_0-1-2.lrplugin.zip)
 
 Changed call from "exiftool.exe" to "exiftool" for cross platform compatibility  
 New exiftool call "exiftool -AspectRatio="" -AspectFrame="0 0 0 0″ -DefaultCropOrigin="" -DefaultCropSize="" -o "NEW" "ORIG"  
